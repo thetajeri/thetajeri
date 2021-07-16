@@ -78,7 +78,7 @@ while i_put != 'END':
 	i_put = input('>  ')
 	list_of_words.append(i_put)
 
-print('\n### Your list is here:\n[%s]'% ' '.join(list_of_words))
+print('\nYour list is here:\n%s'% (list_of_words))
 
 counter = 0
 
