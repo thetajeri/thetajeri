@@ -75,7 +75,7 @@ list_of_words = []
 i_put = ''
 
 while i_put != 'END':
-	i_put = input('>	')
+	i_put = input('>  ')
 	list_of_words.append(i_put)
 
 print('\n### Your list is here:\n[%s]'% ' '.join(list_of_words))
@@ -85,7 +85,7 @@ counter = 0
 file = open('result.txt','a')
 
 for word in list_of_words:
-	text = '%s %s\n'% (counter, word)
+	text = '	%s %s\n'% (counter, word)
 	file.write(text)
 	counter += 1
 
