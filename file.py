@@ -19,23 +19,30 @@
 
 
 
-from os import listdir
+import glob
 
 
 def number_tries(file_name):
-	dir_list = listdir()
+	dir_list = []
+	for file in glob.glob("*.txt"):
+		dir_list.append(file)
 
-	if 'result.txt' in dir_list:
-		file = open('result.txt','r')
+
+	if file_name in dir_list:
+		file = open(file_name,'r')
 		line_list = file.readlines()
 		file.close()
 
 		status = False
+		# in normal status, we don't have such line
+
 		for line in line_list:
 			line_chrs = line.strip().strip()
 			try:
-				if line_chrs[0].isnumeric() and line_chrs[1] == 'times' and line_chrs[2] == 'we':
+				if line_chrs[0].isnumeric() and 'times we spend on this project...' in ' '.join(line_chrs[1:]):
 					status = True
+					# it means, now, we have the line,
+					#  wich have this txt inside: "***** times we spend on this project..."
 					break
 			except(IndexError):
 				pass
@@ -43,23 +50,22 @@ def number_tries(file_name):
 			for line in line_list:
 				line_chrs = line.strip().split()
 				try:
-					if line_chrs[0].isnumeric() and line_chrs[1] == 'times' and line_chrs[2] == 'we':
+					if line_chrs[0].isnumeric() and 'times we spend on this project...' in ' '.join(line_chrs[1:]):
 						try_counter = str(int(line_chrs[0]) + 1)
 				except(IndexError):
 					pass
 		else:
-			file = open('result.txt' , 'a')
-			try_counter = '00001'
-			file.write('\n{} times we spend on this project.\n\n'.format(try_counter))
+			file = open(file_name , 'w')
+			try_counter = '1'
+			file.write('')
 			file.close()
-			try_counter = str(int(try_counter) + 1).zfill(5)
 		# untile here, we have number of tries.
 	else:
-		try_counter = '0'
-		file = open('result.txt','x')
+		try_counter = '1'
+		file = open(file_name,'x')
 		file.close()
 	# and at the end, we have number of tries
 	# as a log file.
 	return try_counter.zfill(5)
 
-print(number_tries('result.txt'))
+try_counter = number_tries('result.txt')
