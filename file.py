@@ -16,7 +16,7 @@ def number_tries(file_name):
 		# in normal status, we don't have such line
 
 		for line in line_list:
-			line_chrs = line.strip().strip()
+			line_chrs = line.strip().split()
 			try:
 				if line_chrs[0].isnumeric() and 'times we spend on this project...' in ' '.join(line_chrs[1:]):
 					status = True
@@ -53,9 +53,31 @@ list_of_words = []
 
 i_put = ''
 
+print('''
+ ______                __         ___     __ 
+/_  __/_ _____  ___   / /____    / (_)__ / /_
+ / / / // / _ \/ -_) / __/ _ \  / / (_-</ __/
+/_/  \_, / .__/\__/  \__/\___/ /_/_/___/\__/ 
+    /___/_/                                  
+        	(final version 1.0)   			 
+
+Information:
+
+Type your sentence word by word.  after typeing each  word 
+press Enter key.
+For ending program and seeing results in "result.txt" file
+type "END" with capitalized characters and press Enter key
+
+Have fun!
+''')
+
 while i_put != 'END':
 	i_put = input('>  ')
-	list_of_words.append(i_put)
+	if i_put == 'END':
+		break
+	else:
+		list_of_words.append(i_put)
+	
 
 print('\nYour list is here:\n%s'% (list_of_words))
 
@@ -67,5 +89,5 @@ for word in list_of_words:
 	text = '	%s %s\n'% (counter, word)
 	file.write(text)
 	counter += 1
-file.write('%s times we spend on this project...'% try_counter)
+file.write('\n%s times we spend on this project...\n\n'% try_counter)
 file.close()
