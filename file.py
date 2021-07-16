@@ -9,9 +9,9 @@
 #counter = 0
 #file = open('result.txt' , 'wt')
 #file.write('')
-#ile.close()
+#file.close()
 #file = open('result.txt', 'at')
-#or this_one in listed:
+#for this_one in listed:
 #	text = '{} {}\n'.format(counter,this_one)
 #	file.write(text)
 #	counter += 1
@@ -69,3 +69,24 @@ def number_tries(file_name):
 	return try_counter.zfill(5)
 
 try_counter = number_tries('result.txt')
+
+list_of_words = []
+
+i_put = ''
+
+while i_put != 'END':
+	i_put = input('>	')
+	list_of_words.append(i_put)
+
+print('\n### Your list is here:\n[%s]'% ' '.join(list_of_words))
+
+counter = 0
+
+file = open('result.txt','a')
+
+for word in list_of_words:
+	text = '%s %s\n'% (counter, word)
+	file.write(text)
+	counter += 1
+
+file.close()
