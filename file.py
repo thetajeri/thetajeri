@@ -59,7 +59,7 @@ print('''
  / / / // / _ \/ -_) / __/ _ \  / / (_-</ __/
 /_/  \_, / .__/\__/  \__/\___/ /_/_/___/\__/ 
     /___/_/                                  
-        	(final version 1.0)   			 
+        	(final version 1.1)   			 
 
 Information:
 
@@ -79,7 +79,7 @@ while i_put != 'END':
 		list_of_words.append(i_put)
 	
 
-print('\nYour list is here:\n%s'% (list_of_words))
+print('\nWords added to result file.\n')
 
 counter = 0
 
